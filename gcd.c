@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 int gcd(int, int);
+int multiple_gcd(int, int*);
 
 int main()
 {
@@ -24,3 +25,21 @@ int gcd(int a, int b)
     }
     return b;
 }
+
+int multiple_gcd(int m, int *x)
+{
+    size_t i;
+    int g;
+    
+    if (m < 1)
+        return 0;
+    g = x[0];
+    for (i = 1; i < m; i++)
+    {
+        g = gcd(g, x[i]);
+        if (g == 1)
+            return 1;
+    }
+    return g;
+}
+    
