@@ -42,4 +42,3 @@ int multiple_gcd(int m, int *x)
     }
     return g;
 }
-    
