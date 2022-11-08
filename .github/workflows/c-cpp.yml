@@ -14,4 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: configure
-      run: gcd.c
+      run: gcc gcd.c
+    - name: run the program
+      run: ./a.out
