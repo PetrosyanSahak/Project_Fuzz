@@ -13,26 +13,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: install libgtest
-      run: sudo apt-get install libgtest-dev
-    - name: install cmake
-      run: sudo apt-get install cmake
-    - name: cd to gtest
-      run: cd /usr/src/gtest
-    - name: make build directory
-      run: sudo mkdir build
-    - name: cd build
-      run: cd build
-    - name: cmake
-      run: sudo cmake /usr/src/gtest
-    - name: make
-      run: sudo make
+    - name: step1
+      run: git clone https://github.com/google/googletest
+    - name: step 2
+      run: cd googletest
+#      run: sudo apt-get install cmake
+    - name: step3
+      run: mkdir build; cd build; cmake ~/googletest; make -j`nproc`; cd ~
+#    - name: step4
+#      run: sudo mkdir build
+#    - name: step5
+#      run: cd build
+#    - name: cmake
+#      run: sudo cmake /usr/src/gtest
+#    - name: make
+#      run: sudo make
 #    - name: cd to gtest
 #      run: cd /usr/src/gtest
 #    - name: cmake run
 #      run: sudo cmake /usr/src/gtest/CMakelists.txt
-    - name: make install
-      run: sudo make  Makefile
+#    - name: make install
+#      run: sudo make  Makefile
     - name: compile
       run: g++ -Wall -L/usr/src/gtest/build/lib/ -g -pthread gtest.cpp -llibgtest -llibgtest_main   -lpthread 
     - name: make check
