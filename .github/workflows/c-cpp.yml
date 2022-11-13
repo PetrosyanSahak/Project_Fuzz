@@ -28,7 +28,7 @@ jobs:
     - name: cd to gtest
       run: cd /usr/src/gtest
     - name: cmake run
-      run: sudo cmake CMakelists.txt
+      run: sudo cmake /usr/src/gtest/CMakelists.txt
     - name: make install
       run: sudo cp /usr/src/gtest/*.a /usr/lib
     - name: compile
