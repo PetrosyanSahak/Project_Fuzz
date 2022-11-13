@@ -35,6 +35,8 @@ jobs:
 #      run: cp /usr/src/gtest/libgtest.a /usr/lib
 #    - name: make install2
 #      run: cp /usr/src/gtest/libgtest_main.a /usr/lib
+    - name: make install
+      run: sudo make install
     - name: compile
       run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
     - name: make check
