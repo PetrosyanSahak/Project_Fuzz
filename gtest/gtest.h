@@ -57,7 +57,7 @@
 #include <type_traits>
 #include <vector>
 
-#include "gtest-assertion-result.h"
+#include "gtest/gtest-assertion-result.h"
 #include "gtest/gtest-death-test.h"
 #include "gtest/gtest-matchers.h"
 #include "gtest/gtest-message.h"
