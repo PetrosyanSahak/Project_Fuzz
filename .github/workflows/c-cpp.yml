@@ -34,7 +34,7 @@ jobs:
     - name: make install
       run: sudo make Makefile
     - name: compile
-      run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
+      run: g++ -Wall -g -pthread gtest.cpp -lgtest -lgtest_main   -lpthread 
     - name: make check
       run: ./a.out
 
