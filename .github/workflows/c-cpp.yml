@@ -25,8 +25,12 @@ jobs:
       run: sudo cmake /usr/src/gtest
     - name: make
       run: sudo make
-#    - name: make install
-#      run: sudo cp /usr/src/gtest/*.a /usr/lib
+    - name: cd to gtest
+      run: cd /usr/src/gtest
+    - name: cmake run
+      run: sudo cmake CMakelists.txt
+    - name: make install
+      run: sudo cp /usr/src/gtest/*.a /usr/lib
     - name: compile
       run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
     - name: make check
