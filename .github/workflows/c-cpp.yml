@@ -19,7 +19,7 @@ jobs:
       run: cd googletest
 #      run: sudo apt-get install cmake
     - name: step3
-      run: mkdir build; cd build; cmake ~googletest; make -j`nproc`; cd ~
+      run: mkdir build; cd build; cmake /home/runner/work/Project_Fuzz/googletest; make -j`nproc`; cd ~
 #    - name: step4
 #      run: sudo mkdir build
 #    - name: step5
