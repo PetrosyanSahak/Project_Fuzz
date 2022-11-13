@@ -32,7 +32,7 @@ jobs:
 #    - name: cmake run
 #      run: sudo cmake /usr/src/gtest/CMakelists.txt
     - name: make install
-      run: sudo make install Makefile
+      run: sudo make  Makefile install
     - name: compile
       run: g++ -Wall -g -pthread gtest.cpp -lgtest -lgtest_main   -lpthread 
     - name: make check
