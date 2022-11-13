@@ -29,13 +29,10 @@ jobs:
       run: sudo make
 #    - name: cd to gtest
 #      run: cd /usr/src/gtest
-    - name: cmake run
-      run: sudo cmake /usr/src/gtest/CMakelists.txt
+#    - name: cmake run
+#      run: sudo cmake /usr/src/gtest/CMakelists.txt
     - name: make install
-      run: cp /usr/src/googletest/googletest/build/lib/libgtest.a /usr/lib
-    - name: make install2
-      run: cp /usr/src/googletest/googletest/build/lib/libgtest_main.a /usr/lib
-
+      run: sudo make Makefile
     - name: compile
       run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
     - name: make check
