@@ -1,16 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-
-int gcd(int, int);
-int multiple_gcd(int, int*);
-
-int main()
-{
-    int num1, num2;
-    scanf("%i%i", &num1, &num2);
-    printf("The GCD of %i and %i is %i", num1, num2, gcd(num1, num2));
-    return 0;
-}
+#include <gcd.h>
 
 int gcd(int a, int b)
 {
