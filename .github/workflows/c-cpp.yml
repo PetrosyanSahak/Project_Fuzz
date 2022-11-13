@@ -17,9 +17,8 @@ jobs:
       run: git clone https://github.com/google/googletest
     - name: step 2
       run: cd googletest
-#      run: sudo apt-get install cmake
     - name: step3
-      run: mkdir build; cd build; cmake ~/Project_Fuzz/googletest; make -j`nproc`; cd ~
+      run: mkdir build; cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/googletest ../googletest; make -j`nproc`; cd ~
 #    - name: step4
 #      run: sudo mkdir build
 #    - name: step5
@@ -36,6 +35,6 @@ jobs:
 #      run: sudo make  Makefile
     - name: compile
       run: g++ -Wall -L/usr/src/gtest/build/lib/ -g -pthread gtest.cpp -llibgtest -llibgtest_main   -lpthread 
-    - name: make check
+    - name: execute
       run: ./a.out
 
