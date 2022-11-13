@@ -21,8 +21,8 @@ jobs:
       run: cd /usr/src/gtest
     - name: make build directory
       run: sudo mkdir build
-#    - name: cmake
-#      run: sudo cmake ..
+    - name: cmake
+      run: sudo cmake ..
     - name: make
       run: sudo make
     - name: make install
