@@ -21,18 +21,20 @@ jobs:
       run: cd /usr/src/gtest
     - name: make build directory
       run: sudo mkdir build
+    - name: cd build
+      run: cd build
     - name: cmake
       run: sudo cmake /usr/src/gtest
     - name: make
       run: sudo make
-    - name: cd to gtest
-      run: cd /usr/src/gtest
+#    - name: cd to gtest
+#      run: cd /usr/src/gtest
     - name: cmake run
       run: sudo cmake /usr/src/gtest/CMakelists.txt
-    - name: make install
-      run: cp /usr/src/gtest/libgtest.a /usr/lib
-    - name: make install2
-      run: cp /usr/src/gtest/libgtest_main.a /usr/lib
+#    - name: make install
+#      run: cp /usr/src/gtest/libgtest.a /usr/lib
+#    - name: make install2
+#      run: cp /usr/src/gtest/libgtest_main.a /usr/lib
     - name: compile
       run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
     - name: make check
