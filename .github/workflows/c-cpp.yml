@@ -18,7 +18,7 @@ jobs:
       run: cd /usr/src/gtest
       run: sudo cmake CMakeLists.txt
       run: sudo make
-sudo cp *.a /usr/lib
+      run: sudo cp *.a /usr/lib
     - name: configure
       run: g++ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest -lpthread 
     - name: run the program
