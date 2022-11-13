@@ -1,4 +1,4 @@
-#include <gcd.h>
+#include "gcd.h"
 
 int gcd(int a, int b)
 {
