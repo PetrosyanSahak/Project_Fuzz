@@ -22,7 +22,7 @@ jobs:
     - name: step3.5
       run: cd build
     - name: step 4
-      run: cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/work/Project_Fuzz/Project_Fuzz googletest
+      run: cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/work/Project_Fuzz/Project_Fuzz ../googletest
     - name: step5
       run: make -j`nproc`
     - name: step6
