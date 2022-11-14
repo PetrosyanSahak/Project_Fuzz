@@ -42,7 +42,7 @@ jobs:
 #    - name: make install
 #      run: sudo make  Makefile
     - name: compile
-      run: g++ -Wall -L/usr/src/gtest/build/lib/ -g -pthread gtest.cpp -llibgtest -llibgtest_main   -lpthread 
+      run: g++ -Wall -g -pthread gtest.cpp -lgtest -lgtest_main   -lpthread 
     - name: execute
       run: ./a.out
 
