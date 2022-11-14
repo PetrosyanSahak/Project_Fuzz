@@ -18,7 +18,9 @@ jobs:
     - name: step 2
       run: cd googletest
     - name: step3
-      run: mkdir build; 
+      run: mkdir build
+    - name: step3.5
+      run: cd build
     - name: step 4
       run: cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/googletest googletest
     - name: step5
