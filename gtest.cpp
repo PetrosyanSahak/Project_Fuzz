@@ -24,6 +24,12 @@ TEST(gcd, fuzz_second_input)
   EXPECT_EQ(10, gcd(20, x));
   EXPECT_EQ(7, gcd(63, x));
 }
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+  // symbolic_int-ery poxarinel fuzzingi tvacov
+  // ashxatacnel testery
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
 
 int main(int argc, char *argv[])
 {
