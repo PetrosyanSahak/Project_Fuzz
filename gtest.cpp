@@ -1,29 +1,32 @@
 #include "gcd.cpp"
-#include "gtest/gtest.h"
+#include "fuzzme"
 
-TEST(gcd, gcd2Prime) // should return 1 for prime numbers
+TEST(gcd, fuzz_first_input) // should return 1 for prime numbers
 {
-  EXPECT_EQ(1, gcd(7, 9));
-  EXPECT_EQ(1, gcd(113, 117));
-  EXPECT_EQ(1, gcd(53, 37));
+  symbolic_int x;  // (int)Data[0];
+  EXPECT_EQ(1, gcd(x, 9));
+  EXPECT_EQ(1, gcd(x, 117));
+  EXPECT_EQ(1, gcd(x, 37));
 }
 
-TEST(gcd, gcd1Prime)
+TEST(gcd, fuzz_two_inputs)
 {
-  EXPECT_EQ(1, gcd(13, 27));
-  EXPECT_EQ(11, gcd(11, 121));
-  EXPECT_EQ(1, gcd(11, 46));
+  symbolic<int> x, y;
+  EXPECT_EQ(1, gcd(x, y));
+  EXPECT_EQ(11, gcd(x, y));
+  EXPECT_EQ(1, gcd(x, y));
 }
 
-TEST(gcd, gcdComposite)
+TEST(gcd, fuzz_second_input)
 {
-  EXPECT_EQ(6, gcd(36, 66));
-  EXPECT_EQ(10, gcd(20, 50));
-  EXPECT_EQ(7, gcd(63, 70));
+  symbolic<int> x;
+  EXPECT_EQ(6, gcd(36, x));
+  EXPECT_EQ(10, gcd(20, x));
+  EXPECT_EQ(7, gcd(63, x));
 }
 
 int main(int argc, char *argv[])
 {
   testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  return RUN_ALL_TESTS(); // tanel LLVM-i mej
 }
