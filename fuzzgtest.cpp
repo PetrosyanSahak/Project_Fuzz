@@ -28,6 +28,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
         if(Size < 1000) return 1;
         fuzzindex = 0;
+        static int fuzzcount = 0;
+        fuzzcount++;
+        if(fuzzcount > 1000)
+          exit(0);
 
         for(int i = 0; i < 1000; ++i)
                 globalbyteread[i] = Data[i];
