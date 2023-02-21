@@ -1,5 +1,5 @@
 #include "gcd.cpp"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
 TEST(gcd, gcd2Prime) // should return 1 for prime numbers
 {
