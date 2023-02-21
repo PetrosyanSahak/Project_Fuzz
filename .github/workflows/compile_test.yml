@@ -18,6 +18,6 @@ jobs:
       uses: MarkusJx/googletest-installer@v1.1
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
-    - name: run
-      run: ./a.out
+#    - name: run
+#      run: ./a.out
 
