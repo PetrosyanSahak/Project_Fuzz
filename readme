@@ -1,1 +1,0 @@
-clang++ -pthread gtest.cpp -lgtest -lgtest_main

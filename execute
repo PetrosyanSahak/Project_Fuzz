@@ -1,0 +1,1 @@
+clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
