@@ -1,9 +1,10 @@
+#include <iostream>
+#include <stdint.h>
 int fuzzindex;
 uint8_t globalbyteread[1000]; // fuzzeri inputy sra mej a pahvum
-
 uint8_t readbytes() {
  if(fuzzindex > 999) return 0;
-	
+
  return globalbyteread[fuzzindex++];
 } //read byte from LLVM
 
@@ -24,23 +25,23 @@ template <typename T>
 class Symbolic {
     public:
         Symbolic(void) {
-	    T *val_ptr = &value;
+            T *val_ptr = &value;
             symbolize(val_ptr, &(val_ptr[1]));
-        } 
-	explicit Symbolic(T new_val) {
-		value = new_val;
-	}
-	operator T (void) const {return value;}
-        T value; 
+        }
+        explicit Symbolic(T new_val) {
+                value = new_val;
+        }
+        operator T (void) const {return value;}
+        T value;
 
         friend std::ostream &operator<<(std::ostream &stream, const Symbolic<T> &obj) {
-		return stream << obj.value;
-	}
+                return stream << obj.value;
+        }
         //overloading unary operators
-        T operator++() {return ++value;}  
-        T operator++(int) {return ++value;} 
-        T operator--() {return --value;}  
-        T operator--(int) {return --value;} 
+        T operator++() {return ++value;}
+        T operator++(int) {return ++value;}
+        T operator--() {return --value;}
+        T operator--(int) {return --value;}
         T operator+() {return value;}
         T operator-() {return -value;}
         T operator~() {return ~value;}
@@ -50,94 +51,94 @@ class Symbolic {
         }
 
         //overloading binary operators
-	T operator+(Symbolic const &obj) {
-	    return this->value + obj.value;
-	}
+        T operator+(Symbolic const &obj) {
+            return this->value + obj.value;
+        }
 
-	T operator-(Symbolic const &obj) {
-	    return this->value - obj.value;
-	}
+        T operator-(Symbolic const &obj) {
+            return this->value - obj.value;
+        }
 
-	T operator*(Symbolic const &obj) {
-	    return this->value * obj.value;
-	}
+        T operator*(Symbolic const &obj) {
+            return this->value * obj.value;
+        }
 
-	T operator/(Symbolic const &obj) {
-	    return this->value / obj.value;
-	}
+        T operator/(Symbolic const &obj) {
+            return this->value / obj.value;
+        }
 
-	T operator^(Symbolic const &obj) {
-	    return this->value ^ obj.value;
-	}
+        T operator^(Symbolic const &obj) {
+            return this->value ^ obj.value;
+        }
 
-	T operator&(Symbolic const &obj) {
-	    return this->value & obj.value;
-	}
+        T operator&(Symbolic const &obj) {
+            return this->value & obj.value;
+        }
 
-	T operator+=(Symbolic const &obj) {
-	    this->value += obj.value;
+        T operator+=(Symbolic const &obj) {
+            this->value += obj.value;
             return this->value;
-	}
+        }
 
-	T operator-=(Symbolic const &obj) {
-	    this->value -= obj.value;
+        T operator-=(Symbolic const &obj) {
+            this->value -= obj.value;
             return this->value;
-	}
+        }
 
-	T operator*=(Symbolic const &obj) {
-	    this->value *= obj.value;
+        T operator*=(Symbolic const &obj) {
+            this->value *= obj.value;
             return this->value;
-	}
+        }
 
-	T operator/=(Symbolic const &obj) {
-	    this->value /= obj.value;
+        T operator/=(Symbolic const &obj) {
+            this->value /= obj.value;
             return this->value;
-	}
+        }
 
-	T operator%=(Symbolic const &obj) {
-	    this->value %= obj.value;
+        T operator%=(Symbolic const &obj) {
+            this->value %= obj.value;
             return this->value;
-	}
+        }
 
-	T operator^=(Symbolic const &obj) {
-	    this->value ^= obj.value;
+        T operator^=(Symbolic const &obj) {
+            this->value ^= obj.value;
             return this->value;
-	}
+        }
 
-	T operator&=(Symbolic const &obj) {
-	    this->value &= obj.value;
+        T operator&=(Symbolic const &obj) {
+            this->value &= obj.value;
             return this->value;
-	}
+        }
 
-	T operator|=(Symbolic const &obj) {
-	    this->value |= obj.value;
+        T operator|=(Symbolic const &obj) {
+            this->value |= obj.value;
             return this->value;
-	}
+        }
 
-	bool operator==(Symbolic const &obj) {
-	    return this->value == obj.value;
-	}
-        
-	bool operator!=(Symbolic const &obj) {
-	    return this->value != obj.value;
-	}
-        
-	bool operator>(Symbolic const &obj) {
-	    return this->value > obj.value;
-	}
-        
-	bool operator>=(Symbolic const &obj) {
-	    return this->value >= obj.value;
-	}
-        
-	bool operator<(Symbolic const &obj) {
-	    return this->value < obj.value;
-	}
-        
-	bool operator<=(Symbolic const &obj) {
-	    return this->value <= obj.value;
-	}
-        
+        bool operator==(Symbolic const &obj) {
+            return this->value == obj.value;
+        }
+
+        bool operator!=(Symbolic const &obj) {
+            return this->value != obj.value;
+        }
+
+        bool operator>(Symbolic const &obj) {
+            return this->value > obj.value;
+        }
+
+        bool operator>=(Symbolic const &obj) {
+            return this->value >= obj.value;
+        }
+
+        bool operator<(Symbolic const &obj) {
+            return this->value < obj.value;
+        }
+
+        bool operator<=(Symbolic const &obj) {
+            return this->value <= obj.value;
+        }
+
 };
 
 template <typename T>
@@ -145,23 +146,22 @@ class SymbolicLinearContainer {
     public:
 
         SymbolicLinearContainer() {
-	        value.reserve(32);
-			value.resize(32);
+                value.reserve(32);
+                        value.resize(32);
             symbolize(&(value.front()), &(value.back()));
 
         }
-        
+
         SymbolicLinearContainer(size_t len) {
-			value.reserve(len);
-			value.resize(len);
+                        value.reserve(len);
+                        value.resize(len);
             symbolize(&(value.front()), &(value.back()));
         }
-    
         operator T (void) const {
-            return value;
+          return value;
         }
 
-        T value ;
+        T value;
 };
 
 template <>
@@ -169,10 +169,20 @@ class Symbolic<std::string> : public SymbolicLinearContainer<std::string> {
     public:
         Symbolic<std::string>() :  SymbolicLinearContainer<std::string>() {}
         Symbolic<std::string>(size_t size) :  SymbolicLinearContainer<std::string>(size) {}
-            
+
         std::string operator + ( Symbolic<std::string> const &obj) {
             return this->value + obj.value;
         }
+        std::string::iterator end() {
+          return this->value.end();
+        }
+        std::string::iterator begin() {
+          return this->value.begin();
+        }
+    //    operator T (void) const {
+    //    operator T (void) const {
+    //      return value;
+    //    }
 };
 
 std::ostream &operator<<(std::ostream &stream, const Symbolic<std::string>& obj) {
