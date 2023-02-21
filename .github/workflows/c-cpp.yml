@@ -12,12 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v3
     - name: Install gtest
       uses: MarkusJx/googletest-installer@v1.1
     - name: ls
       run: ls
     - name: catfile
-      run: cat Project_Fuzz/fuzzgtest.cpp
+      run: cat fuzzgtest.cpp
  #   - name: compile
  #     run: clang++ -pthread -fsanitize=fuzzer /home/runner/work/Project_Fuzz/Project_Fuzz/fuzzgtest.cpp -lgtest -lgtest_main
  #   - name: execute
