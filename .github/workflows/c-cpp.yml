@@ -14,8 +14,6 @@ jobs:
     steps:
     - name: Install gtest
       uses: MarkusJx/googletest-installer@v1.1
-    - name: cdDir
-      
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer /home/runner/work/Project_Fuzz/Project_Fuzz/fuzzgtest.cpp -lgtest -lgtest_main
     - name: execute
