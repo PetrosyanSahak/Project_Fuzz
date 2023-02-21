@@ -11,8 +11,8 @@ TEST(gcd, gcd2Prime) // should return 1 for prime numbers
 
 TEST(gcd, gcd1Prime)
 {
-  //      symbolic_int a;
-  //EXPECT_EQ(a, gcd(13, 27));
+  symbolic_int a;
+  EXPECT_EQ(a, gcd(13, 27));
   EXPECT_EQ(11, gcd(11, 121));
   EXPECT_EQ(1, gcd(11, 46));
 }
