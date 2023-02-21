@@ -12,37 +12,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: step1
-      run: git clone https://github.com/google/googletest
-    - name: step 2
-      run: cd googletest
-    - name: step3
-      run: mkdir build
-    - name: step3.5
-      run: cd build
-    - name: step 4
-      run: cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/work/Project_Fuzz/Project_Fuzz ../googletest
-    - name: step5
-      run: make -j`nproc`
-    - name: step6
-      run: cd ~
-#    - name: step4
-#      run: sudo mkdir build
-#    - name: step5
-#      run: cd build
-#    - name: cmake
-#      run: sudo cmake /usr/src/gtest
-#    - name: make
-#      run: sudo make
-#    - name: cd to gtest
-#      run: cd /usr/src/gtest
-#    - name: cmake run
-#      run: sudo cmake /usr/src/gtest/CMakelists.txt
-#    - name: make install
-#      run: sudo make  Makefile
+    - name: Install gtest
+      uses: MarkusJx/googletest-installer@v1.1
     - name: compile
-      run: g++ -L/home/runner/work/Project_Fuzz/Project_Fuzz/lib/ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest   -lpthread 
-    - name: execute
-      run: ./a.out
+      run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
+    
+   # - uses: actions/checkout@v3
+   # - name: step1
+   #   run: git clone https://github.com/google/googletest
+   # - name: step 2
+   #   run: cd googletest
+   # - name: step3
+   #   run: mkdir build
+   # - name: step3.5
+   #   run: cd build
+   # - name: step 4
+   #   run: cmake -DCMAKE_INSTALL_PREFIX:PATH=/home/runner/work/Project_Fuzz/Project_Fuzz ../googletest
+   # - name: step5
+   #   run: make -j`nproc`
+   # - name: step6
+   #   run: cd ~
+   # - name: compile
+   #   run: g++ -L/home/runner/work/Project_Fuzz/Project_Fuzz/lib/ -Wall -g -pthread gtest.cpp -lgtest_main  -lgtest   -lpthread 
+   # - name: execute
+   #   run: ./a.out
+   #
 
