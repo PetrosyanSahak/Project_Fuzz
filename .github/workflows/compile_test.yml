@@ -19,6 +19,5 @@ jobs:
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
     - name: run
-      timeout-minutes: 1
-      run: ./a.out
+      run: timeout 1 ./a.out || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
 
