@@ -18,8 +18,10 @@ jobs:
       uses: MarkusJx/googletest-installer@v1.1
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
+      timeout-minutes: 1
     - name: run
       #run: timeout 1m ./a.out || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
+      timeout-minutes: 1
       run:  ./a.out
       
 
