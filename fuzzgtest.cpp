@@ -27,12 +27,13 @@ TEST(gcd, gcdComposite)
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
+        static int x;
         if(Size < 1000) return 1;
         fuzzindex = 0;
-        //static int fuzzcount = 0;
-        //fuzzcount++;
-        //if(fuzzcount > 1000)
-         // exit(0);
+        static int fuzzcount = 0;
+        fuzzcount++;
+        if(fuzzcount > 1000)
+          exit(0);
 
         for(int i = 0; i < 1000; ++i)
                 globalbyteread[i] = Data[i];
@@ -43,6 +44,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
           
   //std::cout << a << std::endl;
   testing::InitGoogleTest(&argc, argv);
+  x = RUN_ALL_TESTS();
+  std::cout << "Return code is " << x << std::endl;
 
-  return RUN_ALL_TESTS(); 
+  return 0; 
 }
