@@ -10,7 +10,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 1
     steps:
     - name: Checkout repository content
       uses: actions/checkout@v3
@@ -19,5 +19,7 @@ jobs:
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
     - name: run
-      run: timeout 1m ./a.out || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
+      #run: timeout 1m ./a.out || code=$?; if [[ $code -ne 124 && $code -ne 0 ]]; then exit $code; fi
+      run:  ./a.out
+      
 
