@@ -10,7 +10,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 1
+    
     steps:
     - name: Checkout repository content
       uses: actions/checkout@v3
@@ -19,5 +19,5 @@ jobs:
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
     - name: run
-      run: ./a.out
+      run: timeout 1 ./a.out
 
