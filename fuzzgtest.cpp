@@ -12,8 +12,8 @@ TEST(gcd, gcd2Prime) // should return 1 for prime numbers
 TEST(gcd, gcd1Prime)
 {
 
-  symbolic_int a;
-  EXPECT_EQ(a, gcd(13, 27));
+  
+  EXPECT_EQ(1, gcd(13, 27));
   EXPECT_EQ(11, gcd(11, 121));
   EXPECT_EQ(1, gcd(11, 46));
 }
@@ -28,14 +28,14 @@ TEST(gcd, gcdComposite)
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
         static int x;
-        if (x != 0)
-          exit(x);
+        //if (x != 0)
+         // exit(x);
         if(Size < 1000) return 1;
-        fuzzindex = 0;
-        static int fuzzcount = 0;
-        fuzzcount++;
-        if(fuzzcount > 1000)
-          exit(0);
+        //fuzzindex = 0;
+        //static int fuzzcount = 0;
+        //fuzzcount++;
+        //if(fuzzcount > 1000)
+        //  exit(0);
 
         for(int i = 0; i < 1000; ++i)
                 globalbyteread[i] = Data[i];
@@ -48,6 +48,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
   testing::InitGoogleTest(&argc, argv);
   x = RUN_ALL_TESTS();
   std::cout << "Return code is " << x << std::endl;
-
+  symbolic_int a;
+  int b = 1/a;
   return 0; 
 }
