@@ -28,6 +28,8 @@ TEST(gcd, gcdComposite)
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 {
         static int x;
+        if (x != 0)
+          exit(x);
         if(Size < 1000) return 1;
         fuzzindex = 0;
         static int fuzzcount = 0;
