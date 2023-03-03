@@ -43,5 +43,5 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
   std::cout << a << std::endl;
   testing::InitGoogleTest(&argc, argv);
 
-  return RUN_ALL_TESTS();
+  return RUN_ALL_TESTS(); 
 }
