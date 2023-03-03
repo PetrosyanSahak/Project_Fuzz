@@ -37,20 +37,21 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
         //if(fuzzcount > 1000)
         //  exit(0);
         std::cout << "Return code is " << x << std::endl;
-  symbolic_int a;
-  int b = 1/a;
+  
         for(int i = 0; i < 1000; ++i)
                 globalbyteread[i] = Data[i];
         int argc = 1;
         char t = 'a';
         char* q = &t;
         char** argv = &q;
-          
+  symbolic_int a;
+  if(a > 10000)
+    a = 0;
+  int b = 1/a;
   std::cout << a << std::endl;
   std::cout << b << std::endl;
   
   testing::InitGoogleTest(&argc, argv);
-  x = RUN_ALL_TESTS();
   
-  return 0; 
+  return RUN_ALL_TESTS();; 
 }
