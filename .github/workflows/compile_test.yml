@@ -19,5 +19,6 @@ jobs:
     - name: compile
       run: clang++ -pthread -fsanitize=fuzzer fuzzgtest.cpp -lgtest -lgtest_main
     - name: run
-      run: timeout 1 ./a.out
+      timeout-minutes: 1
+      run: ./a.out
 
