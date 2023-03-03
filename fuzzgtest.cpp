@@ -13,7 +13,7 @@ TEST(gcd, gcd1Prime)
 {
 
   symbolic_int a;
-  ASSERT_EQ(a, gcd(13, 27));
+  EXPECT_EQ(a, gcd(13, 27));
   EXPECT_EQ(11, gcd(11, 121));
   EXPECT_EQ(1, gcd(11, 46));
 }
