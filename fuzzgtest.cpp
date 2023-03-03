@@ -45,7 +45,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
         char* q = &t;
         char** argv = &q;
   symbolic_int a;
-  if(a > 10000)
+  if(a < 0)
     a -= a;
   int b = 1/a;
   std::cout << a << std::endl;
